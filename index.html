@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jack Erison Flores Egusquiza - Senior BI Analyst especializado en Power BI, SQL Server, Python y Azure. Transformo datos en decisiones estratégicas con 10+ años de experiencia.">
+    <meta name="keywords" content="Jack Flores, Power BI, Business Intelligence, SQL, Python, Data Analytics, Dashboard, Senior BI Analyst, Azure Databricks">
+    <meta name="author" content="Jack Erison Flores Egusquiza">
+    <title>Jack Flores | Senior BI Analyst & Power BI Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700;900&display=swap');
+        
+        :root {
+            --powerbi-yellow: #F2C811;
+            --powerbi-black: #252423;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #2D2D2D;
+            --text-gray: #6C757D;
+            --border-gray: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: var(--white);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--powerbi-yellow);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--powerbi-yellow);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--powerbi-yellow);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        /* ÍCONO DECORATIVO DE FONDO */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 20h25v25h-25z M55 20h25v25h-25z M20 55h25v25h-25z M55 55h25v25h-25z' fill='%23E5E7EB' opacity='0.3'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            opacity: 0.15;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* FOTO DE PERFIL - EDITABLE */
+        .profile-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 6px solid var(--powerbi-yellow);
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            /* 👇 CAMBIA ESTA RUTA POR TU FOTO */
+            background-image: url('https://media.licdn.com/dms/image/v2/D4E03AQFAUp0VLtWUkg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1693152609674?e=1767830400&v=beta&t=-6uIlf6pBSMY0F_phKhCKWcm1jcNynu4kQqxj_p8iAk');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--powerbi-yellow);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .hero-title .highlight {
+            color: var(--powerbi-yellow);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--powerbi-yellow);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--powerbi-yellow);
+            color: var(--powerbi-black);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(242, 200, 17, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text-dark);
+            border: 2px solid var(--powerbi-yellow);
+        }
+
+        .btn-secondary:hover {
+            background: var(--powerbi-yellow);
+            color: var(--powerbi-black);
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--powerbi-yellow);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        .about-text strong {
+            color: var(--powerbi-yellow);
+            font-weight: 700;
+        }
+
+        .about-highlights {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-highlights li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-gray);
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .about-highlights li:last-child {
+            border-bottom: none;
+        }
+
+        .about-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--powerbi-yellow);
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        /* SKILLS SECTION */
+        .skills {
+            background: var(--light-gray);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid var(--powerbi-yellow);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* LOGOS DE TECNOLOGÍAS - EDITABLE */
+        .skill-logo {
+            width: 40px;
+            height: 40px;
+            /* 👇 CAMBIA ESTAS RUTAS POR LOS LOGOS REALES */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .skill-logo.powerbi {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg');
+        }
+
+        .skill-logo.sql {
+            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg');
+        }
+
+        .skill-logo.python {
+            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg');
+        }
+
+        .skill-logo.azure {
+            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg');
+        }
+
+        .skill-logo.excel {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg');
+        }
+
+        .skill-logo.tableau {
+            background-image: url('https://cdn.worldvectorlogo.com/logos/tableau-software.svg');
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .skill-percentage {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--powerbi-yellow);
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: var(--border-gray);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--powerbi-yellow);
+            border-radius: 10px;
+            transition: width 1.5s ease-out;
+        }
+
+        /* PROJECTS SECTION CON CARRUSEL */
+        .projects {
+            background: var(--white);
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card {
+            min-width: 380px;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-gray);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* IMAGEN DEL PROYECTO - EDITABLE */
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            /* 👇 CAMBIA ESTAS RUTAS EN EL HTML ABAJO */
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: #FFF9E6;
+            color: var(--powerbi-black);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--powerbi-yellow);
+        }
+
+        .project-link {
+            padding: 0.8rem 2rem;
+            background: var(--powerbi-yellow);
+            color: var(--powerbi-black);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(242, 200, 17, 0.3);
+        }
+
+        /* BOTONES CARRUSEL */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--powerbi-yellow);
+            color: var(--powerbi-black);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: -25px;
+        }
+
+        .carousel-btn.next {
+            right: -25px;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-link.linkedin {
+            background: #0077B5;
+        }
+
+        .social-link.github {
+            background: var(--powerbi-black);
+        }
+
+        .social-link.email {
+            background: #EA4335;
+        }
+
+        .social-link.whatsapp {
+            background: #25D366;
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--powerbi-black);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--powerbi-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: #CCCCCC;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+
+            .project-card {
+                min-width: 300px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">JF</a>
+            <ul class="nav-links">
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <!-- FOTO DE PERFIL - EDITABLE -->
+            <!-- 👇 Cambia el style background-image por tu foto -->
+            
+			<div class="profile-photo" style="background-image: url('images/perfil.jpg');"></div>
+            
+            <div class="hero-text">
+                <div class="hero-subtitle">Senior BI Analyst & Power BI Expert</div>
+                <h1 class="hero-title">
+                    Jack <br>
+                    <span class="highlight">Flores Egusquiza</span>
+                </h1>
+                <p class="hero-description">
+                    Transformo datos en decisiones estratégicas. Especialista en Power BI, SQL Server y Analytics 
+                    con 10+ años de experiencia entregando soluciones de Business Intelligence de alto impacto.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i> Ver Proyectos
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESTADÍSTICAS -->
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Años Experiencia</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Power BI Proficiency</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">KPIs Automatizados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">700K+</span>
+                    <span class="stat-label">Registros/Mes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section about">
+        <h2 class="section-title">Sobre Mí</h2>
+        <div class="about-content">
+            <div>
+                <p class="about-text">
+                    Soy <strong>Jack Flores</strong>, Senior Data Analyst con más de <strong>10 años de experiencia</strong> 
+                    transformando datos complejos en insights accionables. Mi trayectoria profesional abarca desde 
+                    <strong>automatización de procesos BI</strong> hasta implementación de arquitecturas modernas de datos 
+                    en la nube.
+                </p>
+                <p class="about-text" style="margin-top: 1.5rem;">
+                    He liderado proyectos de <strong>migración de sistemas legacy a Azure Databricks</strong>, optimizado 
+                    consultas SQL que procesan millones de registros, y creado dashboards ejecutivos que han revolucionado 
+                    la toma de decisiones en organizaciones multinacionales de retail y telecomunicaciones.
+                </p>
+                <p class="about-text" style="margin-top: 1.5rem;">
+                    Fundador de <strong>"Power BI sin Rodeos"</strong>, donde comparto conocimiento práctico sobre 
+                    Business Intelligence y ayudo a profesionales a dominar Power BI de forma efectiva y sin complicaciones.
+                </p>
+            </div>
+            <div>
+                <ul class="about-highlights">
+                    <li><strong>10+ años</strong> en Business Intelligence y Data Analytics</li>
+                    <li><strong>95% proficiency</strong> en Power BI (Certificación PL-300 en curso)</li>
+                    <li>Experto en <strong>SQL Server, Azure Databricks, Python</strong></li>
+                    <li>Especialización en <strong>Call Center Analytics</strong> y KPIs operativos</li>
+                    <li>Migración exitosa de <strong>Datamart a Lakehouse</strong> Architecture</li>
+                    <li>Automatización que redujo reportes de <strong>4 horas a 5 minutos</strong></li>
+                    <li>Procesamiento de <strong>700K+ registros mensuales</strong> en tiempo real</li>
+                    <li>Implementación de <strong>150+ KPIs</strong> automatizados para toma de decisiones</li>
+                    <li>Creador de contenido en <strong>"Power BI sin Rodeos"</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION CON LOGOS -->
+    <section id="skills" class="section skills">
+        <h2 class="section-title">Skills & Tecnologías</h2>
+        <div class="skills-grid">
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <div class="skill-logo powerbi"></div>
+                        <span class="skill-name">Power BI</span>
+                    </div>
+                    <span class="skill-percentage">95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <div class="skill-logo sql"></div>
+                        <span class="skill-name">SQL Server</span>
+                    </div>
+                    <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <div class="skill-logo python"></div>
+                        <span class="skill-name">Python</span>
+                    </div>
+                    <span class="skill-percentage">75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 75%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <div class="skill-logo azure"></div>
+                        <span class="skill-name">Azure Databricks</span>
+                    </div>
+                    <span class="skill-percentage">70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 70%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <div class="skill-logo excel"></div>
+                        <span class="skill-name">Excel Avanzado</span>
+                    </div>
+                    <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-info">
+                        <div class="skill-logo tableau"></div>
+                        <span class="skill-name">Tableau</span>
+                    </div>
+                    <span class="skill-percentage">70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 70%;"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION CON CARRUSEL -->
+    <section id="projects" class="section projects">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="carousel-track" id="carouselTrack">
+                
+                <!-- PROYECTO 1 - IMAGEN EDITABLE -->
+                <div class="project-card fade-in">
+                    <!-- 👇 Cambia el style background-image por tu screenshot -->
+                    <div class="project-image" style="background-image: url('images/proyecto1.png'); background-size: cover;">
+                        <i class="fas fa-chart-pie" style="font-size: 4rem; color: #CCCCCC;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dashboard Electoral Interactivo</h3>
+                        <p class="project-description">
+                            Sistema de seguimiento con mapa interactivo, análisis regional y KPIs en tiempo real. 
+                            Seguimiento de 45K+ contactados y ranking de líderes territoriales.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Chart.js</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <a href="https://jackflores052022.github.io/dashboard-wilder-escobar/" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Ver Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 2 - IMAGEN EDITABLE -->
+                <div class="project-card fade-in">
+                    <!-- 👇 Cambia el style background-image por tu screenshot -->
+					<div class="project-image" style="background-image: url('images/proyecto2.png'); background-size: cover;">
+                    
+                        <i class="fas fa-headset" style="font-size: 4rem; color: #CCCCCC;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema BI para Call Center</h3>
+                        <p class="project-description">
+                            Sistema completo procesando 700K+ llamadas mensuales. Automatización de reportes 
+                            reduciendo tiempo de 4 horas a 5 minutos con 150+ KPIs.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">SQL Server</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Azure</span>
+                        </div>
+                        <a href="#contact" class="project-link">
+                            <i class="fas fa-info-circle"></i> Ver Detalles
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 3 - IMAGEN EDITABLE -->
+                <div class="project-card fade-in">
+                    <!-- 👇 Cambia el style background-image por tu screenshot -->
+					<div class="project-image" style="background-image: url('images/proyecto3.png'); background-size: cover;">
+                    
+                        <i class="fas fa-cogs" style="font-size: 4rem; color: #CCCCCC;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Automatización Reporting Corporativo</h3>
+                        <p class="project-description">
+                            Sistema automatizado procesando 177 variables de negocio. Stored procedures optimizados 
+                            y dashboards ejecutivos para decisiones estratégicas.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">SQL Server</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">ETL</span>
+                        </div>
+                        <a href="#contact" class="project-link">
+                            <i class="fas fa-info-circle"></i> Ver Detalles
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-btn next" onclick="moveCarousel(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact">
+        <h2 class="section-title">Hablemos de tu Proyecto</h2>
+        <div class="contact-content">
+            <p class="contact-text">
+                ¿Necesitas automatizar reportes, crear dashboards impactantes o migrar tu infraestructura de datos? 
+                Conversemos sobre cómo transformar tus datos en decisiones estratégicas con soluciones de 
+                Business Intelligence probadas.
+            </p>
+            
+            <div class="social-links">
+                <!-- 👇 ACTUALIZA ESTOS LINKS -->
+                <a href="https://www.linkedin.com/in/jack-flores-egusquiza/" target="_blank" class="social-link linkedin" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/JackFlores052022" target="_blank" class="social-link github" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:jack.06ariel@gmail.com" class="social-link email" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/+51963833806" target="_blank" class="social-link whatsapp" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <!-- 👇 NUEVO: INSTAGRAM -->
+                <a href="https://www.instagram.com/powerbisinrodeos/" target="_blank" class="social-link instagram" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="mailto:jack.06ariel@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Enviar Email
+                </a>
+                <a href="https://www.linkedin.com/in/jack-flores-egusquiza/" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i> Conectar en LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand">Power BI sin Rodeos</div>
+        <p class="footer-text">
+            Desarrollado con <i class="fas fa-heart" style="color: var(--powerbi-yellow);"></i> por 
+            <strong>Jack Erison Flores Egusquiza</strong>
+        </p>
+        <p class="footer-text" style="margin-top: 0.5rem;">
+            © 2024 Power BI sin Rodeos | Business Intelligence Solutions
+        </p>
+    </footer>
+
+    <script>
+        // CARRUSEL DE PROYECTOS
+        let currentPosition = 0;
+        const track = document.getElementById('carouselTrack');
+        const cards = document.querySelectorAll('.project-card');
+        const cardWidth = 400; // ancho de tarjeta + gap
+
+        function moveCarousel(direction) {
+            const maxPosition = -(cards.length - 3) * cardWidth;
+            currentPosition += direction * cardWidth;
+            
+            if (currentPosition > 0) currentPosition = 0;
+            if (currentPosition < maxPosition) currentPosition = maxPosition;
+            
+            track.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .skill-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate skill bars
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progress = entry.target.querySelector('.skill-progress');
+                    if (progress) {
+                        const width = progress.style.width;
+                        progress.style.width = '0%';
+                        setTimeout(() => {
+                            progress.style.width = width;
+                        }, 100);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card').forEach(el => {
+            skillObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
