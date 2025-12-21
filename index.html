@@ -437,6 +437,8 @@
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .carousel-container::-webkit-scrollbar {
@@ -450,7 +452,8 @@
         }
 
         .project-card {
-            min-width: 380px;
+            min-width: calc(50% - 1rem);
+            max-width: calc(50% - 1rem);
             flex-shrink: 0;
             background: var(--white);
             border-radius: 16px;
@@ -472,9 +475,10 @@
             background: var(--light-gray);
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+        
+        .project-image i {
+            display: none;
         }
 
         .project-content {
@@ -653,6 +657,15 @@
         }
 
         /* ===== RESPONSIVE MOBILE ===== */
+        
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .project-card {
+                min-width: calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0 1rem;
@@ -754,10 +767,16 @@
 
             .carousel-track {
                 padding: 0 1rem;
+                gap: 1rem;
             }
 
             .project-card {
-                min-width: 300px;
+                min-width: 85%;
+                max-width: 85%;
+            }
+            
+            .project-image i {
+                display: none;
             }
 
             .social-links {
@@ -1106,7 +1125,7 @@
                 <a href="https://github.com/JackFlores052022" target="_blank" class="social-link github" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="mailto:jack.06ariel@gmail.com" class="social-link email" title="Email">
+                <a href="/cdn-cgi/l/email-protection#563c37353d78666037243f333a16313b373f3a7835393b" class="social-link email" title="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
                 <a href="https://wa.me/51963833806" target="_blank" class="social-link whatsapp" title="WhatsApp">
@@ -1121,7 +1140,7 @@
             </div>
 
             <div class="cta-buttons">
-                <a href="mailto:jack.06ariel@gmail.com" class="btn btn-primary">
+                <a href="/cdn-cgi/l/email-protection#b6dcd7d5dd988680d7c4dfd3daf6d1dbd7dfda98d5d9db" class="btn btn-primary">
                     <i class="fas fa-paper-plane"></i> Enviar Email
                 </a>
                 <a href="https://www.linkedin.com/in/jack-flores-egusquiza/" target="_blank" class="btn btn-secondary">
@@ -1143,7 +1162,7 @@
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // CARRUSEL FUNCIONAL
         function scrollCarousel(direction) {
             const container = document.getElementById('carouselContainer');
@@ -1194,13 +1213,4 @@
                             progress.style.width = width;
                         }, 100);
                     }
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.skill-card').forEach(el => {
-            skillObserver.observe(el);
-        });
-    </script>
-</body>
-</html>
+            
