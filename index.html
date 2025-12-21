@@ -27,12 +27,16 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--white);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* NAVBAR */
@@ -86,15 +90,16 @@
         .hero {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background: var(--light-gray);
             position: relative;
             overflow: hidden;
-            padding-top: 100px;
+            padding: 100px 0 2rem 0;
+            width: 100%;
         }
 
-        /* ÍCONO DECORATIVO DE FONDO */
         .hero::before {
             content: '';
             position: absolute;
@@ -111,8 +116,9 @@
 
         .hero-content {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 4rem;
@@ -121,7 +127,6 @@
             z-index: 1;
         }
 
-        /* FOTO DE PERFIL - EDITABLE */
         .profile-photo {
             width: 280px;
             height: 280px;
@@ -129,8 +134,7 @@
             border: 6px solid var(--powerbi-yellow);
             object-fit: cover;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            /* 👇 CAMBIA ESTA RUTA POR TU FOTO */
-            background-image: url('https://media.licdn.com/dms/image/v2/D4E03AQFAUp0VLtWUkg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1693152609674?e=1767830400&v=beta&t=-6uIlf6pBSMY0F_phKhCKWcm1jcNynu4kQqxj_p8iAk');
+            background-image: url('images/perfil.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -167,11 +171,18 @@
             line-height: 1.8;
         }
 
+        .hero-stats-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
-            margin: 3rem 0;
+            margin: 3rem 0 0 0;
         }
 
         .stat-item {
@@ -201,6 +212,7 @@
             display: flex;
             gap: 1.5rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -243,6 +255,7 @@
             padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-title {
@@ -353,11 +366,9 @@
             gap: 1rem;
         }
 
-        /* LOGOS DE TECNOLOGÍAS - EDITABLE */
         .skill-logo {
             width: 40px;
             height: 40px;
-            /* 👇 CAMBIA ESTAS RUTAS POR LOS LOGOS REALES */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -413,25 +424,34 @@
             transition: width 1.5s ease-out;
         }
 
-        /* PROJECTS SECTION CON CARRUSEL */
+        /* PROJECTS SECTION */
         .projects {
             background: var(--white);
         }
 
         .carousel-container {
             position: relative;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             padding: 2rem 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
         }
 
         .carousel-track {
             display: flex;
             gap: 2rem;
-            transition: transform 0.5s ease;
+            padding: 0 2rem;
         }
 
         .project-card {
             min-width: 380px;
+            flex-shrink: 0;
             background: var(--white);
             border-radius: 16px;
             overflow: hidden;
@@ -445,13 +465,13 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        /* IMAGEN DEL PROYECTO - EDITABLE */
         .project-image {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            /* 👇 CAMBIA ESTAS RUTAS EN EL HTML ABAJO */
             background: var(--light-gray);
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -535,11 +555,11 @@
         }
 
         .carousel-btn.prev {
-            left: -25px;
+            left: 10px;
         }
 
         .carousel-btn.next {
-            right: -25px;
+            right: 10px;
         }
 
         /* CONTACT SECTION */
@@ -602,6 +622,10 @@
             background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
         }
 
+        .social-link.facebook {
+            background: #1877F2;
+        }
+
         .social-link:hover {
             transform: translateY(-8px) scale(1.1);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -628,41 +652,149 @@
             line-height: 1.8;
         }
 
-        /* RESPONSIVE */
+        /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 80px 0 2rem 0;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
+                padding: 0 1rem;
             }
 
             .profile-photo {
-                width: 200px;
-                height: 200px;
+                width: 180px;
+                height: 180px;
                 margin: 0 auto;
             }
 
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .hero-stats-wrapper {
+                padding: 0 1rem;
             }
 
             .hero-stats {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin: 2rem 0 0 0;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
+            .stat-item {
+                padding: 1rem 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                padding: 0.9rem 2rem;
             }
 
             .nav-links {
                 display: none;
             }
 
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
             .carousel-btn {
                 display: none;
             }
 
+            .carousel-track {
+                padding: 0 1rem;
+            }
+
             .project-card {
                 min-width: 300px;
+            }
+
+            .social-links {
+                gap: 1.2rem;
+            }
+
+            .social-link {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .profile-photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .stat-number {
+                font-size: 1.6rem;
+            }
+
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            .project-card {
+                min-width: 280px;
             }
         }
 
@@ -699,10 +831,7 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content fade-in">
-            <!-- FOTO DE PERFIL - EDITABLE -->
-            <!-- 👇 Cambia el style background-image por tu foto -->
-            
-			<div class="profile-photo" style="background-image: url('images/perfil.jpg');"></div>
+            <div class="profile-photo"></div>
             
             <div class="hero-text">
                 <div class="hero-subtitle">Senior BI Analyst & Power BI Expert</div>
@@ -727,7 +856,7 @@
         </div>
 
         <!-- ESTADÍSTICAS -->
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <div class="hero-stats-wrapper">
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number">10+</span>
@@ -786,7 +915,7 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION CON LOGOS -->
+    <!-- SKILLS SECTION -->
     <section id="skills" class="section skills">
         <h2 class="section-title">Skills & Tecnologías</h2>
         <div class="skills-grid">
@@ -872,21 +1001,20 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION CON CARRUSEL -->
+    <!-- PROJECTS SECTION -->
     <section id="projects" class="section projects">
         <h2 class="section-title">Proyectos Destacados</h2>
         
-        <div class="carousel-container">
-            <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+        <div class="carousel-container" id="carouselContainer">
+            <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
                 <i class="fas fa-chevron-left"></i>
             </button>
             
-            <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-track">
                 
-                <!-- PROYECTO 1 - IMAGEN EDITABLE -->
+                <!-- PROYECTO 1 -->
                 <div class="project-card fade-in">
-                    <!-- 👇 Cambia el style background-image por tu screenshot -->
-                    <div class="project-image" style="background-image: url('images/proyecto1.png'); background-size: cover;">
+                    <div class="project-image" style="background-image: url('images/proyecto1.png');">
                         <i class="fas fa-chart-pie" style="font-size: 4rem; color: #CCCCCC;"></i>
                     </div>
                     <div class="project-content">
@@ -907,11 +1035,9 @@
                     </div>
                 </div>
 
-                <!-- PROYECTO 2 - IMAGEN EDITABLE -->
+                <!-- PROYECTO 2 -->
                 <div class="project-card fade-in">
-                    <!-- 👇 Cambia el style background-image por tu screenshot -->
-					<div class="project-image" style="background-image: url('images/proyecto2.png'); background-size: cover;">
-                    
+                    <div class="project-image" style="background-image: url('images/proyecto2.png');">
                         <i class="fas fa-headset" style="font-size: 4rem; color: #CCCCCC;"></i>
                     </div>
                     <div class="project-content">
@@ -932,11 +1058,9 @@
                     </div>
                 </div>
 
-                <!-- PROYECTO 3 - IMAGEN EDITABLE -->
+                <!-- PROYECTO 3 -->
                 <div class="project-card fade-in">
-                    <!-- 👇 Cambia el style background-image por tu screenshot -->
-					<div class="project-image" style="background-image: url('images/proyecto3.png'); background-size: cover;">
-                    
+                    <div class="project-image" style="background-image: url('images/proyecto3.png');">
                         <i class="fas fa-cogs" style="font-size: 4rem; color: #CCCCCC;"></i>
                     </div>
                     <div class="project-content">
@@ -959,7 +1083,7 @@
 
             </div>
 
-            <button class="carousel-btn next" onclick="moveCarousel(1)">
+            <button class="carousel-btn next" onclick="scrollCarousel(1)">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
@@ -976,7 +1100,6 @@
             </p>
             
             <div class="social-links">
-                <!-- 👇 ACTUALIZA ESTOS LINKS -->
                 <a href="https://www.linkedin.com/in/jack-flores-egusquiza/" target="_blank" class="social-link linkedin" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
@@ -986,12 +1109,14 @@
                 <a href="mailto:jack.06ariel@gmail.com" class="social-link email" title="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://wa.me/+51963833806" target="_blank" class="social-link whatsapp" title="WhatsApp">
+                <a href="https://wa.me/51963833806" target="_blank" class="social-link whatsapp" title="WhatsApp">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <!-- 👇 NUEVO: INSTAGRAM -->
                 <a href="https://www.instagram.com/powerbisinrodeos/" target="_blank" class="social-link instagram" title="Instagram">
                     <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/powerbisinrodeos" target="_blank" class="social-link facebook" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
             </div>
 
@@ -1019,20 +1144,13 @@
     </footer>
 
     <script>
-        // CARRUSEL DE PROYECTOS
-        let currentPosition = 0;
-        const track = document.getElementById('carouselTrack');
-        const cards = document.querySelectorAll('.project-card');
-        const cardWidth = 400; // ancho de tarjeta + gap
-
-        function moveCarousel(direction) {
-            const maxPosition = -(cards.length - 3) * cardWidth;
-            currentPosition += direction * cardWidth;
-            
-            if (currentPosition > 0) currentPosition = 0;
-            if (currentPosition < maxPosition) currentPosition = maxPosition;
-            
-            track.style.transform = `translateX(${currentPosition}px)`;
+        // CARRUSEL FUNCIONAL
+        function scrollCarousel(direction) {
+            const container = document.getElementById('carouselContainer');
+            container.scrollBy({
+                left: direction * 400,
+                behavior: 'smooth'
+            });
         }
 
         // Smooth scroll
