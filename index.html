@@ -32,6 +32,8 @@ body {
     overflow-x: hidden;
 }
 a { color: inherit; }
+::selection { background: var(--amarillo); color: var(--tinta); }
+html { scrollbar-color: var(--tinta-suave) var(--papel); }
 :focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
 .oscuro :focus-visible { outline-color: var(--amarillo); }
 
@@ -40,7 +42,8 @@ a { color: inherit; }
 .bloque-blanco { background: var(--blanco); }
 
 h1, h2, h3 { font-family: var(--display); line-height: 1.08; letter-spacing: -0.02em; }
-h1 { font-size: clamp(2.4rem, 5.6vw, 4.25rem); font-weight: 800; }
+h1 { font-size: clamp(2.3rem, 4.4vw, 3.6rem); font-weight: 800; text-wrap: balance; }
+h2 { text-wrap: balance; }
 h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; max-width: 20ch; }
 h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
 .entrada { color: var(--tinta-suave); font-size: 1.15rem; max-width: 56ch; margin-top: 1rem; }
@@ -79,67 +82,110 @@ h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
 .menu .boton { padding: 0.55rem 1.1rem; font-size: 0.95rem; }
 
 /* Portada */
-.portada { padding-block: 4.5rem 4rem; }
-.portada-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center; }
+.portada { padding-block: 3.5rem 4.5rem; }
+.portada-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 3rem; align-items: center; }
 .portada p.entrada { margin-top: 1.5rem; }
 .acciones { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
 .nota { margin-top: 1rem; font-size: 0.95rem; color: var(--tinta-suave); }
 
-/* Tablero de ejemplo */
-.tablero {
+/* Panel de operación (demo) */
+.panel {
     background: var(--tinta);
     color: var(--blanco);
-    border-radius: 20px;
-    padding: 1.6rem;
+    border-radius: 18px;
+    padding: 1.25rem;
+    box-shadow: 0 30px 60px -30px rgba(20,33,58,0.55);
+    animation: entra 0.9s cubic-bezier(.16,1,.3,1) both;
 }
-.tablero-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.1rem; }
-.tablero-cab strong { font: 700 1.1rem var(--display); }
-.tablero-cab span { font-size: 0.82rem; color: #B5C0D6; }
-.pestanas { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
-.pestanas button {
-    font: 500 0.9rem var(--texto);
-    color: var(--blanco);
+@keyframes entra { from { transform: translateY(18px); opacity: 0.4; } to { transform: none; opacity: 1; } }
+.panel-barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.7rem; margin-bottom: 1rem; }
+.panel-titulo { font: 700 1.05rem var(--display); }
+.panel-titulo span { font: 400 0.8rem var(--texto); color: #B5C0D6; margin-left: 0.5rem; }
+.segmento { display: inline-flex; background: #0D1730; border-radius: 999px; padding: 3px; }
+.segmento button, .vivo {
+    font: 500 0.86rem var(--texto);
+    color: #D5DCEA;
     background: transparent;
-    border: 1px solid #44557A;
+    border: 0;
     border-radius: 999px;
-    padding: 0.4rem 0.95rem;
+    padding: 0.42rem 0.85rem;
+    min-height: 36px;
     cursor: pointer;
 }
-.pestanas button[aria-pressed="true"] { background: var(--blanco); color: var(--tinta); border-color: var(--blanco); font-weight: 600; }
+.segmento button[aria-pressed="true"] { background: var(--blanco); color: var(--tinta); font-weight: 600; }
+.vivo { display: inline-flex; align-items: center; gap: 0.45rem; border: 1px solid #44557A; }
+.vivo i { width: 8px; height: 8px; border-radius: 50%; background: #3DDC84; }
+.vivo[aria-pressed="false"] i { background: #8D99B3; }
+.fichas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
+.ficha {
+    text-align: left;
+    font-family: var(--texto);
+    color: var(--blanco);
+    background: #1C2B4C;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 0.75rem 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+.ficha:hover { transform: translateY(-2px); }
+.ficha[aria-pressed="true"] { background: #25385F; border-color: var(--amarillo); }
+.ficha span { display: block; font-size: 0.78rem; color: #B5C0D6; }
+.ficha b { display: block; font: 700 1.45rem/1.15 var(--display); font-variant-numeric: tabular-nums; margin-top: 0.2rem; }
+.ficha em { font-style: normal; font-size: 0.76rem; color: #B5C0D6; }
+.panel-cuerpo { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1rem; margin-top: 1rem; }
+.grafico { background: #0D1730; border-radius: 12px; padding: 0.9rem 0.9rem 0.6rem; }
+.grafico h3, .ranking h3 { font: 600 0.85rem var(--texto); letter-spacing: 0; color: #D5DCEA; margin-bottom: 0.7rem; }
 .barras {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
-    gap: 6px;
+    gap: 5px;
     align-items: end;
-    height: 210px;
+    height: 150px;
     border-bottom: 1px solid #44557A;
 }
 .barras div {
     background: var(--barra);
-    border-radius: 4px 4px 0 0;
+    border-radius: 3px 3px 0 0;
     height: 0;
-    transition: height 0.6s cubic-bezier(.2,.7,.2,1), background-color 0.3s;
+    transition: height 0.6s cubic-bezier(.16,1,.3,1), background-color 0.3s;
 }
 .barras div.pico { background: var(--amarillo); }
 .horas {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
-    gap: 6px;
-    margin-top: 0.4rem;
-    font-size: 0.74rem;
+    gap: 5px;
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
     color: #B5C0D6;
     text-align: center;
     font-variant-numeric: tabular-nums;
 }
-.lectura { margin-top: 1.2rem; font-size: 1rem; min-height: 3.2em; }
-.lectura b { font: 700 1.5rem var(--display); display: block; color: var(--amarillo); }
+.ranking { background: #0D1730; border-radius: 12px; padding: 0.9rem; }
+.ranking ol { list-style: none; display: grid; gap: 0.55rem; }
+.ranking li { display: grid; grid-template-columns: 3.4rem 1fr auto; align-items: center; gap: 0.5rem; font-size: 0.86rem; }
+.ranking li i { display: block; height: 6px; border-radius: 3px; background: var(--barra); transition: width 0.6s cubic-bezier(.16,1,.3,1); }
+.ranking li:first-child i { background: var(--amarillo); }
+.ranking li b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.lectura { margin-top: 1rem; font-size: 0.98rem; color: #E6EAF2; min-height: 1.6em; }
+.lectura b { color: var(--amarillo); font-weight: 600; }
 
-/* Cifras */
-.cifras { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--linea); margin-top: 4rem; }
-.cifras div { padding: 1.4rem 1.2rem 0 0; }
-.cifras div + div { padding-left: 1.2rem; border-left: 1px solid var(--linea); }
-.cifras dt { font: 700 1.7rem var(--display); font-variant-numeric: tabular-nums; }
-.cifras dd { font-size: 0.95rem; color: var(--tinta-suave); }
+/* Flujo */
+.flujo { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 3rem; list-style: none; }
+.flujo li { position: relative; padding: 1.2rem 1.4rem 0 0; border-top: 2px solid var(--tinta); }
+.flujo li::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--amarillo);
+    border: 2px solid var(--tinta);
+}
+.flujo strong { display: block; font: 700 1.1rem var(--display); }
+.flujo span { color: var(--tinta-suave); font-size: 0.97rem; }
 
 /* Problemas */
 .problemas { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; }
@@ -148,7 +194,7 @@ h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
 .problemas li:last-child { border-bottom: 1px solid var(--linea); }
 
 /* Servicio */
-.columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+.columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3.5rem; }
 .columnas article { border-top: 4px solid var(--amarillo); padding-top: 1.3rem; }
 .columnas p { color: var(--tinta-suave); margin-top: 0.5rem; }
 .columnas ul { margin-top: 1rem; list-style: none; }
@@ -174,9 +220,9 @@ h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
 .cita-grande blockquote { font: 500 clamp(1.35rem, 2.4vw, 1.9rem)/1.3 var(--display); letter-spacing: -0.01em; }
 .cita-grande figcaption, .cita figcaption { margin-top: 1.2rem; font-size: 0.97rem; color: var(--tinta-suave); }
 figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
-.estrellas { color: #B58E00; letter-spacing: 3px; margin-bottom: 0.9rem; font-size: 1rem; }
+.estrellas { display: block; width: 110px; height: 20px; fill: #B58E00; margin-bottom: 0.9rem; }
 .citas-lado { display: grid; gap: 2rem; }
-.cita { border-left: 4px solid var(--amarillo); padding-left: 1.2rem; }
+.cita { border-top: 1px solid var(--linea); padding-top: 1.4rem; }
 .enlace-resenas { display: inline-block; margin-top: 2.5rem; font-weight: 600; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--amarillo); }
 
 /* Pasos */
@@ -234,17 +280,20 @@ figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
     .portada { padding-block: 2.5rem 3rem; }
     .portada-grid, .problemas, .opiniones, .sobre { grid-template-columns: 1fr; gap: 2.2rem; }
     .columnas, .pasos { grid-template-columns: 1fr; gap: 2rem; }
-    .cifras { grid-template-columns: 1fr 1fr; margin-top: 3rem; }
-    .cifras div:nth-child(3) { padding-left: 0; border-left: 0; }
     .caso { grid-template-columns: 1fr; gap: 0.8rem; }
     .caso a { justify-self: start; }
     .menu li:not(:last-child) { display: none; }
     .foto { width: 150px; }
-    .barras { height: 170px; }
+    .fichas { grid-template-columns: 1fr 1fr; }
+    .panel-cuerpo { grid-template-columns: 1fr; }
+    .flujo { grid-template-columns: 1fr 1fr; row-gap: 1.2rem; }
+    .flujo li:nth-child(3) { padding-left: 0; }
+    .barras { height: 130px; }
 }
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .barras div, .boton { transition: none; }
+    .barras div, .ranking li i, .ficha, .boton { transition: none; }
+    .panel { animation: none; }
 }
 </style>
 </head>
@@ -275,7 +324,7 @@ figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
             </p>
             <div class="acciones">
                 <a class="boton boton-lleno" target="_blank" rel="noopener" href="https://wa.me/51963833806?text=Hola%20Jack%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20contact%20center">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.200 5.200 0 0 0 1.100 2.700 11.800 11.800 0 0 0 4.500 4c1.700.700 2.300.800 3.100.700a2.700 2.700 0 0 0 1.800-1.200 2.200 2.200 0 0 0 .100-1.200c0-.200-.200-.200-.500-.400z"/></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
                     Pedir diagnóstico gratis
                 </a>
                 <a class="boton boton-linea" href="#casos">Ver casos</a>
@@ -283,29 +332,30 @@ figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
             <p class="nota">30 minutos por videollamada, sin costo. Sales con 2 o 3 mejoras concretas.</p>
         </div>
 
-        <div class="tablero oscuro" aria-label="Tablero de ejemplo de un contact center">
-            <div class="tablero-cab">
-                <strong>Tu operación, por hora</strong>
-                <span>Datos de ejemplo</span>
+        <div class="panel oscuro" aria-label="Panel de operación de ejemplo">
+            <div class="panel-barra">
+                <div class="panel-titulo">Panel de operación <span>Datos de ejemplo</span></div>
+                <div class="segmento" role="group" aria-label="Elegir campaña">
+                    <button type="button" data-camp="ventas" aria-pressed="true">Ventas</button>
+                    <button type="button" data-camp="atencion" aria-pressed="false">Atención</button>
+                    <button type="button" data-camp="cobranzas" aria-pressed="false">Cobranzas</button>
+                </div>
+                <button type="button" class="vivo" id="vivo" aria-pressed="true"><i aria-hidden="true"></i><span>En vivo</span></button>
             </div>
-            <div class="pestanas" role="group" aria-label="Elegir indicador">
-                <button type="button" data-kpi="contacto" aria-pressed="true">Contactabilidad</button>
-                <button type="button" data-kpi="tmo" aria-pressed="false">TMO</button>
-                <button type="button" data-kpi="abandono" aria-pressed="false">Abandono</button>
+            <div class="fichas" id="fichas" role="group" aria-label="Elegir indicador"></div>
+            <div class="panel-cuerpo">
+                <div class="grafico">
+                    <h3 id="titulo-grafico"></h3>
+                    <div class="barras" id="barras" aria-hidden="true"></div>
+                    <div class="horas" id="horas" aria-hidden="true"></div>
+                </div>
+                <div class="ranking">
+                    <h3>Por asesor</h3>
+                    <ol id="ranking"></ol>
+                </div>
             </div>
-            <div class="barras" id="barras" aria-hidden="true"></div>
-            <div class="horas" id="horas" aria-hidden="true"></div>
             <p class="lectura" id="lectura" aria-live="polite"></p>
         </div>
-    </div>
-
-    <div class="wrap">
-        <dl class="cifras">
-            <div><dt>10+ años</dt><dd>dentro de contact centers</dd></div>
-            <div><dt>700 mil</dt><dd>llamadas procesadas al mes</dd></div>
-            <div><dt>150+</dt><dd>indicadores automatizados</dd></div>
-            <div><dt>5 minutos</dt><dd>un reporte que tomaba 4 horas</dd></div>
-        </dl>
     </div>
 </section>
 
@@ -325,6 +375,12 @@ figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
     <div class="wrap">
         <h2>Un servicio mensual, no un tablero suelto</h2>
         <p class="entrada">Yo mantengo todo funcionando. Tú y tus supervisores solo abren el tablero.</p>
+        <ol class="flujo" aria-label="Cómo viajan tus datos">
+            <li><strong>Tu CRM o marcador</strong><span>Los datos se quedan donde ya están.</span></li>
+            <li><strong>Carga automática</strong><span>SQL los limpia y ordena cada pocos minutos.</span></li>
+            <li><strong>Tablero en Power BI</strong><span>Se abre desde la web o el celular.</span></li>
+            <li><strong>Resumen mensual</strong><span>Qué mover, en una página.</span></li>
+        </ol>
         <div class="columnas">
             <article>
                 <h3>Tableros en Power BI</h3>
@@ -394,7 +450,7 @@ figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
         <h2>Lo que dicen quienes ya trabajaron conmigo</h2>
         <div class="opiniones">
             <figure class="cita-grande">
-                <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+                <svg class="estrellas" viewBox="0 0 110 20" role="img" aria-label="5 de 5 estrellas"><defs><path id="e" d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8-4.300-4.100 5.900-.800z"/></defs><use href="#e"/><use href="#e" x="22"/><use href="#e" x="44"/><use href="#e" x="66"/><use href="#e" x="88"/></svg>
                 <blockquote>
                     "Trabajé con Jack en dashboards de Power BI para nuestro software de call center y el
                     resultado fue excelente. Logró transformar grandes volúmenes de datos en paneles claros,
@@ -486,62 +542,134 @@ figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
 
 <script>
 (function () {
-    var horas = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    var kpis = {
-        contacto: {
-            valores: [18, 24, 31, 29, 22, 17, 21, 26, 30, 36, 47, 41, 28],
-            titulo: function (h, v) { return v + '% de contacto a las ' + h + ':00'; },
-            detalle: 'Tu mejor tramo. Ahí conviene concentrar a tus asesores.'
-        },
-        tmo: {
-            valores: [212, 205, 198, 221, 240, 263, 251, 230, 219, 208, 201, 215, 228],
-            titulo: function (h, v) { return v + ' segundos de TMO a las ' + h + ':00'; },
-            detalle: 'El tramo más lento del día. Vale la pena revisar qué pasa ahí.'
-        },
-        abandono: {
-            valores: [4, 5, 6, 9, 12, 14, 11, 8, 6, 5, 7, 9, 6],
-            titulo: function (h, v) { return v + '% de abandono a las ' + h + ':00'; },
-            detalle: 'El pico coincide con el almuerzo: faltan asesores conectados.'
-        }
+    var HORAS = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    var ASESORES = ['Rosa', 'Luis', 'Carla', 'Diego'];
+    var FACTOR = [1.14, 1.05, 0.96, 0.87];
+    function pct(v) { return Math.round(v) + '%'; }
+    function seg(v) { v = Math.round(v); return Math.floor(v / 60) + ':' + ('0' + (v % 60)).slice(-2); }
+    function num(v) { return String(Math.round(v)); }
+    function miles(v) { return 'S/ ' + Math.round(v) + ' mil'; }
+
+    var CAMP = {
+        ventas: [
+            { n: 'Contactabilidad', f: pct, a: 'avg', pico: 'max', v: [18,24,31,29,22,17,21,26,30,36,47,41,28], t: 'Tu mejor tramo de contacto es a las {h}. Ahí conviene concentrar asesores.' },
+            { n: 'TMO', f: seg, a: 'avg', pico: 'max', v: [212,205,198,221,240,263,251,230,219,208,201,215,228], t: 'El tramo más lento es a las {h}. Vale la pena revisar qué pasa ahí.' },
+            { n: 'Abandono', f: pct, a: 'avg', pico: 'max', v: [4,5,6,9,12,14,11,8,6,5,7,9,6], t: 'El abandono sube a las {h}: faltan asesores conectados en el almuerzo.' },
+            { n: 'Ventas', f: num, a: 'sum', pico: 'max', v: [6,9,14,12,8,5,7,10,13,17,24,20,11], t: 'Las {h} son tu hora de mayor venta del día.' }
+        ],
+        atencion: [
+            { n: 'Nivel de servicio', f: pct, a: 'avg', pico: 'min', v: [91,88,84,79,72,66,70,78,83,86,88,90,92], t: 'El nivel de servicio cae a las {h}, por debajo de la meta de 80%.' },
+            { n: 'TMO', f: seg, a: 'avg', pico: 'max', v: [305,312,330,348,362,371,355,340,328,319,310,304,298], t: 'Las llamadas más largas llegan a las {h}.' },
+            { n: 'Abandono', f: pct, a: 'avg', pico: 'max', v: [3,4,6,8,11,15,12,9,7,5,4,3,3], t: 'El abandono llega a su pico a las {h}.' },
+            { n: 'Atendidas', f: num, a: 'sum', pico: 'max', v: [140,210,280,330,300,240,260,290,310,270,220,180,120], t: 'La mayor carga de llamadas es a las {h}.' }
+        ],
+        cobranzas: [
+            { n: 'Contactabilidad', f: pct, a: 'avg', pico: 'max', v: [22,27,30,28,21,16,19,23,27,33,41,44,35], t: 'Los deudores contestan más a las {h}. Ahí rinde más la gestión.' },
+            { n: 'TMO', f: seg, a: 'avg', pico: 'max', v: [188,192,201,214,226,231,224,212,205,198,207,219,210], t: 'Las gestiones más largas son a las {h}.' },
+            { n: 'Promesas', f: num, a: 'sum', pico: 'max', v: [12,18,25,22,15,10,13,17,21,28,39,42,30], t: 'A las {h} se cierran más promesas de pago.' },
+            { n: 'Recupero', f: miles, a: 'sum', pico: 'max', v: [9,14,21,19,12,8,10,13,17,22,28,31,20], t: 'El mayor recupero del día entra a las {h}.' }
+        ]
     };
 
+    var fichas = document.getElementById('fichas');
     var barras = document.getElementById('barras');
     var ejeHoras = document.getElementById('horas');
+    var ranking = document.getElementById('ranking');
     var lectura = document.getElementById('lectura');
-    var botones = document.querySelectorAll('.pestanas button');
+    var titulo = document.getElementById('titulo-grafico');
+    var botonVivo = document.getElementById('vivo');
+    var botonesCamp = document.querySelectorAll('.segmento button');
+    var camp = 'ventas', sel = 0, actual = [], reloj = null;
+    var sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    horas.forEach(function (h) {
+    HORAS.forEach(function (h) {
         barras.appendChild(document.createElement('div'));
-        var e = document.createElement('span');
-        e.textContent = h;
-        ejeHoras.appendChild(e);
+        var e = document.createElement('span'); e.textContent = h; ejeHoras.appendChild(e);
+    });
+    ASESORES.forEach(function (nombre) {
+        var li = document.createElement('li');
+        li.innerHTML = '<span></span><i></i><b></b>';
+        li.firstChild.textContent = nombre;
+        ranking.appendChild(li);
     });
 
-    function mostrar(nombre) {
-        var k = kpis[nombre];
-        var max = Math.max.apply(null, k.valores);
-        var pico = k.valores.indexOf(max);
-        Array.prototype.forEach.call(barras.children, function (b, i) {
-            b.style.height = Math.round(k.valores[i] / max * 100) + '%';
-            b.className = i === pico ? 'pico' : '';
-        });
-        lectura.innerHTML = '';
-        var fuerte = document.createElement('b');
-        fuerte.textContent = k.titulo(horas[pico], max);
-        lectura.appendChild(fuerte);
-        lectura.appendChild(document.createTextNode(k.detalle));
-        Array.prototype.forEach.call(botones, function (b) {
-            b.setAttribute('aria-pressed', b.dataset.kpi === nombre ? 'true' : 'false');
-        });
+    function total(k, vals) {
+        var s = vals.reduce(function (a, b) { return a + b; }, 0);
+        return k.a === 'sum' ? s : s / vals.length;
     }
 
-    Array.prototype.forEach.call(botones, function (b) {
-        b.addEventListener('click', function () { mostrar(b.dataset.kpi); });
-    });
+    function armarFichas() {
+        fichas.innerHTML = '';
+        CAMP[camp].forEach(function (k, i) {
+            var b = document.createElement('button');
+            b.type = 'button'; b.className = 'ficha';
+            b.innerHTML = '<span></span><b></b><em></em>';
+            b.firstChild.textContent = k.n;
+            b.addEventListener('click', function () { sel = i; pintar(true); });
+            fichas.appendChild(b);
+        });
+        actual = CAMP[camp].map(function (k) { return k.v.slice(); });
+    }
 
-    requestAnimationFrame(function () {
-        requestAnimationFrame(function () { mostrar('contacto'); });
+    function pintar(conLectura) {
+        var lista = CAMP[camp];
+        Array.prototype.forEach.call(fichas.children, function (b, i) {
+            var k = lista[i];
+            b.setAttribute('aria-pressed', i === sel ? 'true' : 'false');
+            b.children[1].textContent = k.f(total(k, actual[i]));
+            b.children[2].textContent = k.a === 'sum' ? 'acumulado hoy' : 'promedio hoy';
+        });
+        var k = lista[sel], vals = actual[sel];
+        var max = Math.max.apply(null, vals);
+        var ref = k.pico === 'min' ? Math.min.apply(null, k.v) : Math.max.apply(null, k.v);
+        var pico = k.v.indexOf(ref);
+        Array.prototype.forEach.call(barras.children, function (d, i) {
+            d.style.height = Math.max(4, Math.round(vals[i] / max * 100)) + '%';
+            d.className = i === pico ? 'pico' : '';
+        });
+        var base = total(k, vals) / (k.a === 'sum' ? ASESORES.length : 1);
+        Array.prototype.forEach.call(ranking.children, function (li, i) {
+            li.children[1].style.width = Math.round(FACTOR[i] / FACTOR[0] * 100) + '%';
+            li.children[2].textContent = k.f(base * FACTOR[i]);
+        });
+        if (!conLectura) { return; }
+        titulo.textContent = k.n + ' por hora';
+        var partes = k.t.split('{h}');
+        lectura.textContent = '';
+        lectura.appendChild(document.createTextNode(partes[0]));
+        var b = document.createElement('b'); b.textContent = HORAS[pico] + ':00';
+        lectura.appendChild(b);
+        lectura.appendChild(document.createTextNode(partes[1] || ''));
+    }
+
+    function latido() {
+        actual = CAMP[camp].map(function (k) {
+            return k.v.map(function (v) { return v * (0.97 + Math.random() * 0.06); });
+        });
+        pintar(false);
+    }
+
+    function vivo(encender) {
+        clearInterval(reloj); reloj = null;
+        if (encender) { reloj = setInterval(latido, 2800); }
+        botonVivo.setAttribute('aria-pressed', encender ? 'true' : 'false');
+        botonVivo.lastChild.textContent = encender ? 'En vivo' : 'En pausa';
+    }
+
+    Array.prototype.forEach.call(botonesCamp, function (b) {
+        b.addEventListener('click', function () {
+            camp = b.dataset.camp; sel = 0;
+            Array.prototype.forEach.call(botonesCamp, function (x) {
+                x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+            });
+            armarFichas(); pintar(true);
+        });
     });
+    botonVivo.addEventListener('click', function () { vivo(!reloj); });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) { vivo(false); } });
+
+    armarFichas();
+    requestAnimationFrame(function () { requestAnimationFrame(function () { pintar(true); vivo(!sinMovimiento); }); });
 })();
 </script>
 </body>
