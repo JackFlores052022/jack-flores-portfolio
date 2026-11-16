@@ -1,1216 +1,548 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jack Erison Flores Egusquiza - Senior BI Analyst especializado en Power BI, SQL Server, Python y Azure. Transformo datos en decisiones estratégicas con 10+ años de experiencia.">
-    <meta name="keywords" content="Jack Flores, Power BI, Business Intelligence, SQL, Python, Data Analytics, Dashboard, Senior BI Analyst, Azure Databricks">
-    <meta name="author" content="Jack Erison Flores Egusquiza">
-    <title>Jack Flores | Senior BI Analyst & Power BI Expert</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700;900&display=swap');
-        
-        :root {
-            --powerbi-yellow: #F2C811;
-            --powerbi-black: #252423;
-            --white: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --text-dark: #2D2D2D;
-            --text-gray: #6C757D;
-            --border-gray: #E5E7EB;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* NAVBAR */
-        .navbar {
-            background: var(--white);
-            padding: 1.5rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--powerbi-yellow);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--powerbi-yellow);
-            text-decoration: none;
-            letter-spacing: -1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--powerbi-yellow);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: var(--light-gray);
-            position: relative;
-            overflow: hidden;
-            padding: 100px 0 2rem 0;
-            width: 100%;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 20h25v25h-25z M55 20h25v25h-25z M20 55h25v25h-25z M55 55h25v25h-25z' fill='%23E5E7EB' opacity='0.3'/%3E%3C/svg%3E");
-            background-size: 100px 100px;
-            opacity: 0.15;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-photo {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            border: 6px solid var(--powerbi-yellow);
-            object-fit: cover;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            background-image: url('images/perfil.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-            color: var(--powerbi-yellow);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-            line-height: 1.1;
-        }
-
-        .hero-title .highlight {
-            color: var(--powerbi-yellow);
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-stats-wrapper {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin: 3rem 0 0 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--powerbi-yellow);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--powerbi-yellow);
-            color: var(--powerbi-black);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(242, 200, 17, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--text-dark);
-            border: 2px solid var(--powerbi-yellow);
-        }
-
-        .btn-secondary:hover {
-            background: var(--powerbi-yellow);
-            color: var(--powerbi-black);
-        }
-
-        /* SECTIONS */
-        .section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--text-dark);
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--powerbi-yellow);
-        }
-
-        /* ABOUT SECTION */
-        .about {
-            background: var(--white);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.9;
-        }
-
-        .about-text strong {
-            color: var(--powerbi-yellow);
-            font-weight: 700;
-        }
-
-        .about-highlights {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .about-highlights li {
-            padding: 1rem 0;
-            padding-left: 2.5rem;
-            position: relative;
-            color: var(--text-gray);
-            border-bottom: 1px solid var(--border-gray);
-        }
-
-        .about-highlights li:last-child {
-            border-bottom: none;
-        }
-
-        .about-highlights li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--powerbi-yellow);
-            font-size: 1.2rem;
-            font-weight: 900;
-        }
-
-        /* SKILLS SECTION */
-        .skills {
-            background: var(--light-gray);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border-left: 4px solid var(--powerbi-yellow);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .skill-logo {
-            width: 40px;
-            height: 40px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .skill-logo.powerbi {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg');
-        }
-
-        .skill-logo.sql {
-            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg');
-        }
-
-        .skill-logo.python {
-            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg');
-        }
-
-        .skill-logo.azure {
-            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg');
-        }
-
-        .skill-logo.excel {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg');
-        }
-
-        .skill-logo.tableau {
-            background-image: url('https://cdn.worldvectorlogo.com/logos/tableau-software.svg');
-        }
-
-        .skill-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .skill-percentage {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--powerbi-yellow);
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: var(--border-gray);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--powerbi-yellow);
-            border-radius: 10px;
-            transition: width 1.5s ease-out;
-        }
-
-        /* PROJECTS SECTION */
-        .projects {
-            background: var(--white);
-        }
-
-        .carousel-container {
-            position: relative;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 2rem 0;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .carousel-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .project-card {
-            min-width: calc(50% - 1rem);
-            max-width: calc(50% - 1rem);
-            flex-shrink: 0;
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid var(--border-gray);
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: var(--light-gray);
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .project-image i {
-            display: none;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .project-description {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background: #FFF9E6;
-            color: var(--powerbi-black);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid var(--powerbi-yellow);
-        }
-
-        .project-link {
-            padding: 0.8rem 2rem;
-            background: var(--powerbi-yellow);
-            color: var(--powerbi-black);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-        }
-
-        .project-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(242, 200, 17, 0.3);
-        }
-
-        /* BOTONES CARRUSEL */
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--powerbi-yellow);
-            color: var(--powerbi-black);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .carousel-btn:hover {
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-btn.prev {
-            left: 10px;
-        }
-
-        .carousel-btn.next {
-            right: 10px;
-        }
-
-        /* CONTACT SECTION */
-        .contact {
-            background: var(--light-gray);
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .contact-text {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--white);
-            transition: all 0.3s;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .social-link.linkedin {
-            background: #0077B5;
-        }
-
-        .social-link.github {
-            background: var(--powerbi-black);
-        }
-
-        .social-link.email {
-            background: #EA4335;
-        }
-
-        .social-link.whatsapp {
-            background: #25D366;
-        }
-
-        .social-link.instagram {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        }
-
-        .social-link.facebook {
-            background: #1877F2;
-        }
-
-        .social-link:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--powerbi-black);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .footer-brand {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--powerbi-yellow);
-            margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            color: #CCCCCC;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        /* ===== RESPONSIVE MOBILE ===== */
-        
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .project-card {
-                min-width: calc(50% - 1rem);
-                max-width: calc(50% - 1rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .hero {
-                padding: 80px 0 2rem 0;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-                padding: 0 1rem;
-            }
-
-            .profile-photo {
-                width: 180px;
-                height: 180px;
-                margin: 0 auto;
-            }
-
-            .hero-text {
-                text-align: center;
-            }
-
-            .hero-subtitle {
-                font-size: 0.8rem;
-                letter-spacing: 1px;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-description {
-                font-size: 0.95rem;
-            }
-
-            .hero-stats-wrapper {
-                padding: 0 1rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                margin: 2rem 0 0 0;
-            }
-
-            .stat-item {
-                padding: 1rem 0.5rem;
-            }
-
-            .stat-number {
-                font-size: 1.8rem;
-            }
-
-            .stat-label {
-                font-size: 0.7rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-                padding: 0.9rem 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-text {
-                font-size: 1rem;
-            }
-
-            .carousel-btn {
-                display: none;
-            }
-
-            .carousel-track {
-                padding: 0 1rem;
-                gap: 1rem;
-            }
-
-            .project-card {
-                min-width: 85%;
-                max-width: 85%;
-            }
-            
-            .project-image i {
-                display: none;
-            }
-
-            .social-links {
-                gap: 1.2rem;
-            }
-
-            .social-link {
-                width: 55px;
-                height: 55px;
-                font-size: 1.4rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .profile-photo {
-                width: 160px;
-                height: 160px;
-            }
-
-            .hero-title {
-                font-size: 1.7rem;
-            }
-
-            .stat-number {
-                font-size: 1.6rem;
-            }
-
-            .stat-label {
-                font-size: 0.65rem;
-            }
-
-            .project-card {
-                min-width: 280px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Analítica y Power BI para contact centers. Tableros, reportes automáticos y hallazgos mensuales para operaciones de ventas, atención y cobranzas. Diagnóstico gratis de 30 minutos.">
+<meta name="author" content="Jack Flores Egusquiza">
+<title>Jack Flores | Analítica y Power BI para contact centers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --tinta: #14213A;
+    --tinta-suave: #4A5670;
+    --papel: #EEF1F4;
+    --blanco: #FFFFFF;
+    --amarillo: #F2C811;
+    --barra: #5C7199;
+    --linea: #D3D9E2;
+    --display: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+    --texto: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--texto);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--tinta);
+    background: var(--papel);
+    overflow-x: hidden;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
+.oscuro :focus-visible { outline-color: var(--amarillo); }
+
+.wrap { max-width: 1120px; margin-inline: auto; padding-inline: 1.5rem; }
+.bloque { padding-block: 5rem; }
+.bloque-blanco { background: var(--blanco); }
+
+h1, h2, h3 { font-family: var(--display); line-height: 1.08; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4.25rem); font-weight: 800; }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; max-width: 20ch; }
+h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+.entrada { color: var(--tinta-suave); font-size: 1.15rem; max-width: 56ch; margin-top: 1rem; }
+
+/* Botones */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font: 600 1rem var(--texto);
+    padding: 0.9rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 2px solid var(--tinta);
+    transition: transform 0.15s ease;
+}
+.boton:hover { transform: translateY(-2px); }
+.boton-lleno { background: var(--amarillo); border-color: var(--amarillo); color: var(--tinta); }
+.boton-linea { background: transparent; }
+.oscuro .boton-linea { border-color: var(--blanco); color: var(--blanco); }
+.boton svg { width: 1.2em; height: 1.2em; fill: currentColor; flex: none; }
+
+/* Cabecera */
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--papel);
+    border-bottom: 1px solid var(--linea);
+}
+.cabecera .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.8rem; }
+.marca { font: 800 1.25rem var(--display); text-decoration: none; letter-spacing: -0.02em; }
+.menu { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+.menu a { text-decoration: none; font-weight: 500; font-size: 0.97rem; }
+.menu a:not(.boton):hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.menu .boton { padding: 0.55rem 1.1rem; font-size: 0.95rem; }
+
+/* Portada */
+.portada { padding-block: 4.5rem 4rem; }
+.portada-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center; }
+.portada p.entrada { margin-top: 1.5rem; }
+.acciones { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+.nota { margin-top: 1rem; font-size: 0.95rem; color: var(--tinta-suave); }
+
+/* Tablero de ejemplo */
+.tablero {
+    background: var(--tinta);
+    color: var(--blanco);
+    border-radius: 20px;
+    padding: 1.6rem;
+}
+.tablero-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.1rem; }
+.tablero-cab strong { font: 700 1.1rem var(--display); }
+.tablero-cab span { font-size: 0.82rem; color: #B5C0D6; }
+.pestanas { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
+.pestanas button {
+    font: 500 0.9rem var(--texto);
+    color: var(--blanco);
+    background: transparent;
+    border: 1px solid #44557A;
+    border-radius: 999px;
+    padding: 0.4rem 0.95rem;
+    cursor: pointer;
+}
+.pestanas button[aria-pressed="true"] { background: var(--blanco); color: var(--tinta); border-color: var(--blanco); font-weight: 600; }
+.barras {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 6px;
+    align-items: end;
+    height: 210px;
+    border-bottom: 1px solid #44557A;
+}
+.barras div {
+    background: var(--barra);
+    border-radius: 4px 4px 0 0;
+    height: 0;
+    transition: height 0.6s cubic-bezier(.2,.7,.2,1), background-color 0.3s;
+}
+.barras div.pico { background: var(--amarillo); }
+.horas {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 6px;
+    margin-top: 0.4rem;
+    font-size: 0.74rem;
+    color: #B5C0D6;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+.lectura { margin-top: 1.2rem; font-size: 1rem; min-height: 3.2em; }
+.lectura b { font: 700 1.5rem var(--display); display: block; color: var(--amarillo); }
+
+/* Cifras */
+.cifras { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--linea); margin-top: 4rem; }
+.cifras div { padding: 1.4rem 1.2rem 0 0; }
+.cifras div + div { padding-left: 1.2rem; border-left: 1px solid var(--linea); }
+.cifras dt { font: 700 1.7rem var(--display); font-variant-numeric: tabular-nums; }
+.cifras dd { font-size: 0.95rem; color: var(--tinta-suave); }
+
+/* Problemas */
+.problemas { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; }
+.problemas ul { list-style: none; }
+.problemas li { padding-block: 1.1rem; border-top: 1px solid var(--linea); font-size: 1.12rem; }
+.problemas li:last-child { border-bottom: 1px solid var(--linea); }
+
+/* Servicio */
+.columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+.columnas article { border-top: 4px solid var(--amarillo); padding-top: 1.3rem; }
+.columnas p { color: var(--tinta-suave); margin-top: 0.5rem; }
+.columnas ul { margin-top: 1rem; list-style: none; }
+.columnas li { padding-block: 0.45rem; border-top: 1px solid var(--linea); font-size: 0.98rem; }
+
+/* Casos */
+.casos { margin-top: 3rem; border-top: 2px solid var(--tinta); }
+.caso {
+    display: grid;
+    grid-template-columns: 0.9fr 1.5fr 9.5rem;
+    gap: 2rem;
+    align-items: center;
+    padding-block: 1.8rem;
+    border-bottom: 1px solid var(--linea);
+}
+.caso .dato { font: 800 clamp(1.7rem, 3vw, 2.4rem) var(--display); letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.caso .dato small { display: block; font: 400 0.92rem var(--texto); color: var(--tinta-suave); letter-spacing: 0; margin-top: 0.4rem; }
+.caso p { color: var(--tinta-suave); margin-top: 0.3rem; max-width: 52ch; }
+.caso a { justify-self: end; font-weight: 600; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--amarillo); white-space: nowrap; }
+
+/* Clientes */
+.opiniones { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+.cita-grande blockquote { font: 500 clamp(1.35rem, 2.4vw, 1.9rem)/1.3 var(--display); letter-spacing: -0.01em; }
+.cita-grande figcaption, .cita figcaption { margin-top: 1.2rem; font-size: 0.97rem; color: var(--tinta-suave); }
+figcaption strong { display: block; color: var(--tinta); font-weight: 600; }
+.estrellas { color: #B58E00; letter-spacing: 3px; margin-bottom: 0.9rem; font-size: 1rem; }
+.citas-lado { display: grid; gap: 2rem; }
+.cita { border-left: 4px solid var(--amarillo); padding-left: 1.2rem; }
+.enlace-resenas { display: inline-block; margin-top: 2.5rem; font-weight: 600; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--amarillo); }
+
+/* Pasos */
+.pasos { list-style: none; counter-reset: paso; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+.pasos li { counter-increment: paso; }
+.pasos li::before {
+    content: counter(paso);
+    display: block;
+    font: 800 3.2rem/1 var(--display);
+    color: var(--amarillo);
+    -webkit-text-stroke: 1.5px var(--tinta);
+    margin-bottom: 0.8rem;
+}
+.pasos p { color: var(--tinta-suave); margin-top: 0.4rem; }
+
+/* Sobre mí */
+.sobre { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
+.foto {
+    width: 220px;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    background: var(--linea) url('images/perfil.jpg') center/cover;
+}
+.sobre p { max-width: 60ch; margin-top: 1rem; color: var(--tinta-suave); }
+.sobre p strong { color: var(--tinta); font-weight: 600; }
+.herramientas { margin-top: 1.5rem; font-size: 0.98rem; }
+.herramientas strong { font-weight: 600; }
+
+/* Contacto */
+.contacto { background: var(--tinta); color: var(--blanco); padding-block: 5.5rem; }
+.contacto h2 { max-width: 16ch; font-size: clamp(2.1rem, 4.6vw, 3.4rem); }
+.contacto p { color: #C6CFE0; max-width: 50ch; margin-top: 1.2rem; font-size: 1.15rem; }
+.redes { display: flex; gap: 1.5rem; margin-top: 2.5rem; font-size: 0.97rem; }
+.redes a { color: #C6CFE0; text-underline-offset: 4px; }
+
+.pie { background: var(--tinta); color: #9AA6BE; border-top: 1px solid #2E3E61; padding-block: 1.3rem; font-size: 0.9rem; }
+
+.flotante {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #1FA855;
+    display: grid;
+    place-items: center;
+    z-index: 60;
+    border: 3px solid var(--blanco);
+}
+.flotante svg { width: 30px; height: 30px; fill: #FFFFFF; }
+
+@media (max-width: 900px) {
+    .bloque { padding-block: 3.5rem; }
+    .portada { padding-block: 2.5rem 3rem; }
+    .portada-grid, .problemas, .opiniones, .sobre { grid-template-columns: 1fr; gap: 2.2rem; }
+    .columnas, .pasos { grid-template-columns: 1fr; gap: 2rem; }
+    .cifras { grid-template-columns: 1fr 1fr; margin-top: 3rem; }
+    .cifras div:nth-child(3) { padding-left: 0; border-left: 0; }
+    .caso { grid-template-columns: 1fr; gap: 0.8rem; }
+    .caso a { justify-self: start; }
+    .menu li:not(:last-child) { display: none; }
+    .foto { width: 150px; }
+    .barras { height: 170px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .barras div, .boton { transition: none; }
+}
+</style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">JF</a>
-            <ul class="nav-links">
-                <li><a href="#about">Sobre Mí</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content fade-in">
-            <div class="profile-photo"></div>
-            
-            <div class="hero-text">
-                <div class="hero-subtitle">Senior BI Analyst & Power BI Expert</div>
-                <h1 class="hero-title">
-                    Jack <br>
-                    <span class="highlight">Flores Egusquiza</span>
-                </h1>
-                <p class="hero-description">
-                    Transformo datos en decisiones estratégicas. Especialista en Power BI, SQL Server y Analytics 
-                    con 10+ años de experiencia entregando soluciones de Business Intelligence de alto impacto.
-                </p>
-                
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-folder-open"></i> Ver Proyectos
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i> Contactar
-                    </a>
-                </div>
-            </div>
-        </div>
+<header class="cabecera">
+    <div class="wrap">
+        <a class="marca" href="#inicio">Jack Flores</a>
+        <ul class="menu">
+            <li><a href="#servicio">Servicio</a></li>
+            <li><a href="#casos">Casos</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a class="boton boton-lleno" target="_blank" rel="noopener" href="https://wa.me/51963833806?text=Hola%20Jack%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20contact%20center">Pedir diagnóstico gratis</a></li>
+        </ul>
+    </div>
+</header>
 
-        <!-- ESTADÍSTICAS -->
-        <div class="hero-stats-wrapper">
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Años Experiencia</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">95%</span>
-                    <span class="stat-label">Power BI Proficiency</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">150+</span>
-                    <span class="stat-label">KPIs Automatizados</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">700K+</span>
-                    <span class="stat-label">Registros/Mes</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="inicio">
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section about">
-        <h2 class="section-title">Sobre Mí</h2>
-        <div class="about-content">
-            <div>
-                <p class="about-text">
-                    Soy <strong>Jack Flores</strong>, Senior Data Analyst con más de <strong>10 años de experiencia</strong> 
-                    transformando datos complejos en insights accionables. Mi trayectoria profesional abarca desde 
-                    <strong>automatización de procesos BI</strong> hasta implementación de arquitecturas modernas de datos 
-                    en la nube.
-                </p>
-                <p class="about-text" style="margin-top: 1.5rem;">
-                    He liderado proyectos de <strong>migración de sistemas legacy a Azure Databricks</strong>, optimizado 
-                    consultas SQL que procesan millones de registros, y creado dashboards ejecutivos que han revolucionado 
-                    la toma de decisiones en organizaciones multinacionales de retail y telecomunicaciones.
-                </p>
-                <p class="about-text" style="margin-top: 1.5rem;">
-                    Fundador de <strong>"Power BI sin Rodeos"</strong>, donde comparto conocimiento práctico sobre 
-                    Business Intelligence y ayudo a profesionales a dominar Power BI de forma efectiva y sin complicaciones.
-                </p>
-            </div>
-            <div>
-                <ul class="about-highlights">
-                    <li><strong>10+ años</strong> en Business Intelligence y Data Analytics</li>
-                    <li><strong>95% proficiency</strong> en Power BI (Certificación PL-300 en curso)</li>
-                    <li>Experto en <strong>SQL Server, Azure Databricks, Python</strong></li>
-                    <li>Especialización en <strong>Call Center Analytics</strong> y KPIs operativos</li>
-                    <li>Migración exitosa de <strong>Datamart a Lakehouse</strong> Architecture</li>
-                    <li>Automatización que redujo reportes de <strong>4 horas a 5 minutos</strong></li>
-                    <li>Procesamiento de <strong>700K+ registros mensuales</strong> en tiempo real</li>
-                    <li>Implementación de <strong>150+ KPIs</strong> automatizados para toma de decisiones</li>
-                    <li>Creador de contenido en <strong>"Power BI sin Rodeos"</strong></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section skills">
-        <h2 class="section-title">Skills & Tecnologías</h2>
-        <div class="skills-grid">
-            
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-info">
-                        <div class="skill-logo powerbi"></div>
-                        <span class="skill-name">Power BI</span>
-                    </div>
-                    <span class="skill-percentage">95%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 95%;"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-info">
-                        <div class="skill-logo sql"></div>
-                        <span class="skill-name">SQL Server</span>
-                    </div>
-                    <span class="skill-percentage">90%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%;"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-info">
-                        <div class="skill-logo python"></div>
-                        <span class="skill-name">Python</span>
-                    </div>
-                    <span class="skill-percentage">75%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 75%;"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-info">
-                        <div class="skill-logo azure"></div>
-                        <span class="skill-name">Azure Databricks</span>
-                    </div>
-                    <span class="skill-percentage">70%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 70%;"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-info">
-                        <div class="skill-logo excel"></div>
-                        <span class="skill-name">Excel Avanzado</span>
-                    </div>
-                    <span class="skill-percentage">85%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%;"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-header">
-                    <div class="skill-info">
-                        <div class="skill-logo tableau"></div>
-                        <span class="skill-name">Tableau</span>
-                    </div>
-                    <span class="skill-percentage">70%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 70%;"></div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="section projects">
-        <h2 class="section-title">Proyectos Destacados</h2>
-        
-        <div class="carousel-container" id="carouselContainer">
-            <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            <div class="carousel-track">
-                
-                <!-- PROYECTO 1 -->
-                <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: url('images/proyecto1.png');">
-                        <i class="fas fa-chart-pie" style="font-size: 4rem; color: #CCCCCC;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dashboard Electoral Interactivo</h3>
-                        <p class="project-description">
-                            Sistema de seguimiento con mapa interactivo, análisis regional y KPIs en tiempo real. 
-                            Seguimiento de 45K+ contactados y ranking de líderes territoriales.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Chart.js</span>
-                            <span class="tag">Responsive</span>
-                        </div>
-                        <a href="https://jackflores052022.github.io/dashboard-wilder-escobar/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Ver Demo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PROYECTO 2 -->
-                <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: url('images/proyecto2.png');">
-                        <i class="fas fa-headset" style="font-size: 4rem; color: #CCCCCC;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sistema BI para Call Center</h3>
-                        <p class="project-description">
-                            Sistema completo procesando 700K+ llamadas mensuales. Automatización de reportes 
-                            reduciendo tiempo de 4 horas a 5 minutos con 150+ KPIs.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Power BI</span>
-                            <span class="tag">SQL Server</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Azure</span>
-                        </div>
-                        <a href="https://lime-pastry-d36.notion.site/CRM-para-Call-Centers-con-BI-Integrado-294295739edf80a68dc8d81d173afa38" target="_blank" class="project-link"">
-                            <i class="fas fa-external-link-alt"></i> Ver Proyecto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PROYECTO 3 -->
-                <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: url('images/proyecto3.png');">
-                        <i class="fas fa-cogs" style="font-size: 4rem; color: #CCCCCC;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Automatización Reporting Corporativo</h3>
-                        <p class="project-description">
-                            Sistema automatizado procesando 177 variables de negocio. Stored procedures optimizados 
-                            y dashboards ejecutivos para decisiones estratégicas.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">SQL Server</span>
-                            <span class="tag">Power BI</span>
-                            <span class="tag">DAX</span>
-                            <span class="tag">ETL</span>
-                        </div>
-                        <a href="#contact" class="project-link">
-                            <i class="fas fa-info-circle"></i> Ver Detalles
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <button class="carousel-btn next" onclick="scrollCarousel(1)">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section contact">
-        <h2 class="section-title">Hablemos de tu Proyecto</h2>
-        <div class="contact-content">
-            <p class="contact-text">
-                ¿Necesitas automatizar reportes, crear dashboards impactantes o migrar tu infraestructura de datos? 
-                Conversemos sobre cómo transformar tus datos en decisiones estratégicas con soluciones de 
-                Business Intelligence probadas.
+<section class="portada">
+    <div class="wrap portada-grid">
+        <div>
+            <h1>Tu contact center ya tiene los datos. Falta verlos a tiempo.</h1>
+            <p class="entrada">
+                Armo tus tableros en Power BI, automatizo tus reportes y cada mes te digo qué mover
+                en tu operación de ventas, atención o cobranzas.
             </p>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/jack-flores-egusquiza/" target="_blank" class="social-link linkedin" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
+            <div class="acciones">
+                <a class="boton boton-lleno" target="_blank" rel="noopener" href="https://wa.me/51963833806?text=Hola%20Jack%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20contact%20center">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.200 5.200 0 0 0 1.100 2.700 11.800 11.800 0 0 0 4.500 4c1.700.700 2.300.800 3.100.700a2.700 2.700 0 0 0 1.800-1.200 2.200 2.200 0 0 0 .100-1.200c0-.200-.200-.200-.500-.400z"/></svg>
+                    Pedir diagnóstico gratis
                 </a>
-                <a href="https://github.com/JackFlores052022" target="_blank" class="social-link github" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="/cdn-cgi/l/email-protection#563c37353d78666037243f333a16313b373f3a7835393b" class="social-link email" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://wa.me/51963833806" target="_blank" class="social-link whatsapp" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/powerbisinrodeos/" target="_blank" class="social-link instagram" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61578613032300" target="_blank" class="social-link facebook" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
+                <a class="boton boton-linea" href="#casos">Ver casos</a>
             </div>
+            <p class="nota">30 minutos por videollamada, sin costo. Sales con 2 o 3 mejoras concretas.</p>
+        </div>
 
-            <div class="cta-buttons">
-                <a href="/cdn-cgi/l/email-protection#b6dcd7d5dd988680d7c4dfd3daf6d1dbd7dfda98d5d9db" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Enviar Email
-                </a>
-                <a href="https://www.linkedin.com/in/jack-flores-egusquiza/" target="_blank" class="btn btn-secondary">
-                    <i class="fab fa-linkedin"></i> Conectar en LinkedIn
-                </a>
+        <div class="tablero oscuro" aria-label="Tablero de ejemplo de un contact center">
+            <div class="tablero-cab">
+                <strong>Tu operación, por hora</strong>
+                <span>Datos de ejemplo</span>
+            </div>
+            <div class="pestanas" role="group" aria-label="Elegir indicador">
+                <button type="button" data-kpi="contacto" aria-pressed="true">Contactabilidad</button>
+                <button type="button" data-kpi="tmo" aria-pressed="false">TMO</button>
+                <button type="button" data-kpi="abandono" aria-pressed="false">Abandono</button>
+            </div>
+            <div class="barras" id="barras" aria-hidden="true"></div>
+            <div class="horas" id="horas" aria-hidden="true"></div>
+            <p class="lectura" id="lectura" aria-live="polite"></p>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <dl class="cifras">
+            <div><dt>10+ años</dt><dd>dentro de contact centers</dd></div>
+            <div><dt>700 mil</dt><dd>llamadas procesadas al mes</dd></div>
+            <div><dt>150+</dt><dd>indicadores automatizados</dd></div>
+            <div><dt>5 minutos</dt><dd>un reporte que tomaba 4 horas</dd></div>
+        </dl>
+    </div>
+</section>
+
+<section class="bloque bloque-blanco">
+    <div class="wrap problemas">
+        <h2>Lo que encuentro en casi todas las operaciones</h2>
+        <ul>
+            <li>Los reportes se arman a mano en Excel y llegan cuando el día ya terminó.</li>
+            <li>Nadie sabe con certeza en qué horario conviene poner más asesores.</li>
+            <li>Cada supervisor maneja una cifra distinta de TMO, ACW o abandono.</li>
+            <li>El CRM o el marcador guarda todo, pero nadie tiene tiempo de analizarlo.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="bloque" id="servicio">
+    <div class="wrap">
+        <h2>Un servicio mensual, no un tablero suelto</h2>
+        <p class="entrada">Yo mantengo todo funcionando. Tú y tus supervisores solo abren el tablero.</p>
+        <div class="columnas">
+            <article>
+                <h3>Tableros en Power BI</h3>
+                <p>Toda tu operación en una pantalla que se actualiza sola.</p>
+                <ul>
+                    <li>Contactabilidad por tramo horario</li>
+                    <li>TMO, ACW y abandono</li>
+                    <li>Productividad por asesor y campaña</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Reportes automáticos</h3>
+                <p>Se acaba el copiar y pegar de cada mañana.</p>
+                <ul>
+                    <li>Conexión a tu CRM, marcador o base</li>
+                    <li>Carga y limpieza de datos en SQL</li>
+                    <li>Una sola cifra oficial para todos</li>
+                </ul>
+            </article>
+            <article>
+                <h3>Hallazgos mensuales</h3>
+                <p>Un resumen escrito al mes con lo que dicen tus datos.</p>
+                <ul>
+                    <li>Qué mejoró y qué empeoró</li>
+                    <li>Dónde se pierde tiempo o ventas</li>
+                    <li>Las tres acciones de mayor impacto</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="bloque bloque-blanco" id="casos">
+    <div class="wrap">
+        <h2>Casos con resultado medido</h2>
+        <div class="casos">
+            <div class="caso">
+                <div class="dato">4 horas a 5 minutos<small>tiempo del reporte diario</small></div>
+                <div>
+                    <h3>BI integrado a un CRM de call center</h3>
+                    <p>Más de 700 mil llamadas al mes y más de 150 indicadores, con Power BI, SQL Server y Python.</p>
+                </div>
+                <a target="_blank" rel="noopener" href="https://lime-pastry-d36.notion.site/CRM-para-Call-Centers-con-BI-Integrado-294295739edf80a68dc8d81d173afa38">Ver el proyecto</a>
+            </div>
+            <div class="caso">
+                <div class="dato">177 variables<small>de negocio automatizadas</small></div>
+                <div>
+                    <h3>Reportes corporativos sin trabajo manual</h3>
+                    <p>Procedimientos almacenados en SQL Server y tableros ejecutivos para gerencia.</p>
+                </div>
+                <a href="#contacto">Pedir detalles</a>
+            </div>
+            <div class="caso">
+                <div class="dato">45 mil contactos<small>con seguimiento territorial</small></div>
+                <div>
+                    <h3>Tablero web de gestión en campo</h3>
+                    <p>Mapa interactivo, avance por región y ranking de responsables, visible desde el celular.</p>
+                </div>
+                <a target="_blank" rel="noopener" href="https://jackflores052022.github.io/dashboard-wilder-escobar/">Ver la demo</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-brand">Power BI sin Rodeos</div>
-        <p class="footer-text">
-            Desarrollado con <i class="fas fa-heart" style="color: var(--powerbi-yellow);"></i> por 
-            <strong>Jack Erison Flores Egusquiza</strong>
-        </p>
-        <p class="footer-text" style="margin-top: 0.5rem;">
-            © 2024 Power BI sin Rodeos | Business Intelligence Solutions
-        </p>
-    </footer>
+<section class="bloque" id="clientes">
+    <div class="wrap">
+        <h2>Lo que dicen quienes ya trabajaron conmigo</h2>
+        <div class="opiniones">
+            <figure class="cita-grande">
+                <div class="estrellas" aria-label="5 de 5 estrellas">★★★★★</div>
+                <blockquote>
+                    "Trabajé con Jack en dashboards de Power BI para nuestro software de call center y el
+                    resultado fue excelente. Logró transformar grandes volúmenes de datos en paneles claros,
+                    dinámicos y fáciles de interpretar."
+                </blockquote>
+                <figcaption><strong>Daniel Niño De Guzman Becerra</strong>Gerente de Sistemas, mayo de 2026</figcaption>
+            </figure>
+            <div class="citas-lado">
+                <figure class="cita">
+                    <blockquote>
+                        "Quedé impresionada con su experiencia y profesionalismo. Entregó buenos resultados y
+                        demostró que estaba comprometido con nuestra experiencia."
+                    </blockquote>
+                    <figcaption><strong>Massiel Delgado</strong>Ingeniera Industrial, octubre de 2023</figcaption>
+                </figure>
+                <figure class="cita">
+                    <blockquote>"Excelente desarrollo del proyecto y excelente atención."</blockquote>
+                    <figcaption><strong>Yahaira Marapi Vega</strong>Administración de Empresas, marzo de 2025</figcaption>
+                </figure>
+            </div>
+        </div>
+        <a class="enlace-resenas" target="_blank" rel="noopener" href="https://www.linkedin.com/services/page/8a8718325b5472548b/">Leer las reseñas completas en LinkedIn</a>
+    </div>
+</section>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // CARRUSEL FUNCIONAL
-        function scrollCarousel(direction) {
-            const container = document.getElementById('carouselContainer');
-            container.scrollBy({
-                left: direction * 400,
-                behavior: 'smooth'
-            });
+<section class="bloque bloque-blanco">
+    <div class="wrap">
+        <h2>Cómo empezamos</h2>
+        <ol class="pasos">
+            <li>
+                <h3>Diagnóstico gratis</h3>
+                <p>30 minutos por videollamada. Reviso cómo reportas hoy y te digo qué mejoraría primero.</p>
+            </li>
+            <li>
+                <h3>Implementación</h3>
+                <p>Conecto tus fuentes, automatizo la carga y entrego los primeros tableros en pocas semanas.</p>
+            </li>
+            <li>
+                <h3>Acompañamiento mensual</h3>
+                <p>Mantengo todo al día, agrego lo que necesites y te envío los hallazgos cada mes.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="bloque" id="sobre-mi">
+    <div class="wrap sobre">
+        <div class="foto" role="img" aria-label="Foto de Jack Flores"></div>
+        <div>
+            <h2>Conozco el contact center por dentro</h2>
+            <p>
+                Soy <strong>Jack Flores</strong>. Llevo más de 10 años en analítica para contact centers y
+                cobranzas: contactabilidad, productividad, calidad y recupero.
+            </p>
+            <p>
+                Sé qué mira un supervisor a las 9 de la mañana y qué necesita un gerente para decidir.
+                Desde ahí construyo los tableros. También enseño Power BI en
+                <a href="https://www.instagram.com/powerbisinrodeos/" target="_blank" rel="noopener">Power BI sin Rodeos</a>.
+            </p>
+            <p class="herramientas"><strong>Trabajo con</strong> Power BI, DAX, SQL Server, Python, Azure, Databricks, Excel avanzado y Tableau.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<section class="contacto oscuro" id="contacto">
+    <div class="wrap">
+        <h2>Cuéntame cómo reportas hoy</h2>
+        <p>En 30 minutos te llevas 2 o 3 mejoras concretas para tu operación. Sin costo.</p>
+        <div class="acciones">
+            <a class="boton boton-lleno" target="_blank" rel="noopener" href="https://wa.me/51963833806?text=Hola%20Jack%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20contact%20center">Pedir diagnóstico gratis</a>
+            <a class="boton boton-linea" target="_blank" rel="noopener" href="https://www.linkedin.com/in/jack-flores-egusquiza/">Escribirme por LinkedIn</a>
+        </div>
+        <div class="redes">
+            <a href="https://www.instagram.com/powerbisinrodeos/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://github.com/JackFlores052022" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </div>
+</section>
+
+<footer class="pie">
+    <div class="wrap">© 2026 Jack Flores. Analítica y Power BI para contact centers, Lima, Perú.</div>
+</footer>
+
+<a class="flotante" target="_blank" rel="noopener" aria-label="Pedir diagnóstico gratis por WhatsApp" href="https://wa.me/51963833806?text=Hola%20Jack%2C%20quiero%20el%20diagn%C3%B3stico%20gratis%20para%20mi%20contact%20center">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+</a>
+
+<script>
+(function () {
+    var horas = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    var kpis = {
+        contacto: {
+            valores: [18, 24, 31, 29, 22, 17, 21, 26, 30, 36, 47, 41, 28],
+            titulo: function (h, v) { return v + '% de contacto a las ' + h + ':00'; },
+            detalle: 'Tu mejor tramo. Ahí conviene concentrar a tus asesores.'
+        },
+        tmo: {
+            valores: [212, 205, 198, 221, 240, 263, 251, 230, 219, 208, 201, 215, 228],
+            titulo: function (h, v) { return v + ' segundos de TMO a las ' + h + ':00'; },
+            detalle: 'El tramo más lento del día. Vale la pena revisar qué pasa ahí.'
+        },
+        abandono: {
+            valores: [4, 5, 6, 9, 12, 14, 11, 8, 6, 5, 7, 9, 6],
+            titulo: function (h, v) { return v + '% de abandono a las ' + h + ':00'; },
+            detalle: 'El pico coincide con el almuerzo: faltan asesores conectados.'
         }
+    };
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+    var barras = document.getElementById('barras');
+    var ejeHoras = document.getElementById('horas');
+    var lectura = document.getElementById('lectura');
+    var botones = document.querySelectorAll('.pestanas button');
+
+    horas.forEach(function (h) {
+        barras.appendChild(document.createElement('div'));
+        var e = document.createElement('span');
+        e.textContent = h;
+        ejeHoras.appendChild(e);
+    });
+
+    function mostrar(nombre) {
+        var k = kpis[nombre];
+        var max = Math.max.apply(null, k.valores);
+        var pico = k.valores.indexOf(max);
+        Array.prototype.forEach.call(barras.children, function (b, i) {
+            b.style.height = Math.round(k.valores[i] / max * 100) + '%';
+            b.className = i === pico ? 'pico' : '';
         });
-
-        // Animate on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.project-card, .skill-card').forEach(el => {
-            observer.observe(el);
+        lectura.innerHTML = '';
+        var fuerte = document.createElement('b');
+        fuerte.textContent = k.titulo(horas[pico], max);
+        lectura.appendChild(fuerte);
+        lectura.appendChild(document.createTextNode(k.detalle));
+        Array.prototype.forEach.call(botones, function (b) {
+            b.setAttribute('aria-pressed', b.dataset.kpi === nombre ? 'true' : 'false');
         });
+    }
 
-        // Animate skill bars
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progress = entry.target.querySelector('.skill-progress');
-                    if (progress) {
-                        const width = progress.style.width;
-                        progress.style.width = '0%';
-                        setTimeout(() => {
-                            progress.style.width = width;
-                        }, 100);
-                    }
-            
+    Array.prototype.forEach.call(botones, function (b) {
+        b.addEventListener('click', function () { mostrar(b.dataset.kpi); });
+    });
+
+    requestAnimationFrame(function () {
+        requestAnimationFrame(function () { mostrar('contacto'); });
+    });
+})();
+</script>
+</body>
+</html>
